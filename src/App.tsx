@@ -167,6 +167,33 @@ function TinyFish({ x, y, flip = false, color = '#b8f2e6' }: { x: number; y: num
   )
 }
 
+function MascotWhale({ transform, className = '' }: { transform?: string; className?: string }) {
+  return (
+    <g transform={transform} className={`mascot-whale ${className}`}>
+      <path
+        d="M29 108C25 51 63 19 126 17c66-2 105 25 139 77 19 29 37 40 57 34 8-3 14-8 19-15-2 15 2 26 12 34-14-1-24 2-31 10 14 4 28 3 42-5-8 20-26 31-50 28-18-2-31-10-39-18-25 23-63 35-113 34-75-2-126-32-133-88Z"
+        fill="#7599c6"
+        stroke="#073b4c"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M32 112c24-8 49-1 76 15 31 18 54 42 86 53 28 10 55 4 78-11-25 23-63 35-111 33-72-3-119-34-129-90Z" fill="#fff3d8" stroke="#073b4c" strokeWidth="6" strokeLinejoin="round" />
+      <path d="M54 116c4 29 18 52 40 69M79 119c6 34 24 59 51 76M108 128c10 32 31 55 61 72M138 145c13 25 31 43 55 55" fill="none" stroke="#d7b982" strokeWidth="5" strokeLinecap="round" />
+      <path d="M180 171c8 27 25 46 52 57-3-32-10-57-30-73" fill="#6687b7" stroke="#073b4c" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M112 186c7 23 21 37 43 43 3-16 2-27-2-34" fill="#6687b7" stroke="#073b4c" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+      <ellipse cx="106" cy="89" rx="18" ry="22" fill="#073b4c" />
+      <circle cx="100" cy="82" r="8" fill="white" />
+      <circle cx="112" cy="98" r="4" fill="white" />
+      <ellipse cx="135" cy="119" rx="18" ry="10" fill="#ff9da2" />
+      <path d="M56 111c19 10 39 10 53-3" fill="none" stroke="#073b4c" strokeWidth="7" strokeLinecap="round" />
+      <ellipse cx="148" cy="29" rx="10" ry="4" fill="#073b4c" />
+      <ellipse cx="170" cy="32" rx="8" ry="4" fill="#073b4c" />
+      <path d="M67 55c34-26 88-34 138-11" fill="none" stroke="#b9d8ed" strokeWidth="7" strokeLinecap="round" opacity=".8" />
+    </g>
+  )
+}
+
 function HeroWhale() {
   return (
     <svg className="hero-art" viewBox="0 0 720 550" role="img" aria-label="A smiling whale swims safely under a small boat at the ocean surface">
@@ -184,16 +211,10 @@ function HeroWhale() {
       </g>
       <path className="surface-line" d="M17 161c59-31 120 31 179 0s120 31 180 0 120 31 180 0 101 23 150 3" />
       <g className="hero-whale">
-        <path d="M101 324c75-104 251-136 377-54 43 28 64 65 56 105-10 51-75 86-169 88-128 3-232-37-270-104-9-17-7-25 6-35Z" fill="#63d8d2" className="ink" />
-        <path d="M531 376c50-6 86-34 106-82 7 47 0 85-20 111 30 8 58 31 83 70-64-2-112-17-145-45" fill="#63d8d2" className="ink tail" />
-        <path d="M322 445c20 33 54 56 103 66-47 24-94 18-137-20" fill="#55c6c5" className="ink fin" />
-        <path d="M122 341c56-13 99-5 129 25" fill="none" className="ink-line belly" opacity=".16" />
-        <circle cx="209" cy="337" r="9" fill="#073b4c" />
-        <circle cx="206" cy="334" r="3" fill="white" />
-        <path d="M151 383c34 24 75 29 121 14" fill="none" className="ink-line smile" />
-        <path d="M112 306c-7-49 10-81 50-96-4 39 12 66 50 80" fill="none" className="ink-line spout" />
-        <circle cx="92" cy="195" r="12" fill="#b8f2e6" />
-        <circle cx="62" cy="154" r="7" fill="#b8f2e6" />
+        <MascotWhale transform="translate(70 205) scale(1.55)" />
+        <path d="M300 249c-9-38 4-63 38-77-3 30 10 49 37 58" fill="none" className="ink-line spout" />
+        <circle cx="324" cy="154" r="11" fill="#b8f2e6" />
+        <circle cx="355" cy="119" r="7" fill="#b8f2e6" />
       </g>
       <TinyFish x={547} y={252} />
       <TinyFish x={590} y={289} flip color="#ffe27a" />
@@ -223,10 +244,7 @@ function ZonesArt() {
         <text x="154" y="329" textAnchor="middle" className="svg-label">10 KNOTS</text>
       </g>
       <g className="mini-whale swim">
-        <path d="M229 307c52-52 153-61 219-9 22 17 33 39 27 61-8 28-48 45-102 43-73-2-131-29-153-64-8-13-5-22 9-31Z" fill="#67d9d4" className="ink" />
-        <path d="M473 355c27-5 48-22 62-50 0 26-7 47-19 60 17 5 31 16 43 34-34 0-59-9-76-26" fill="#67d9d4" className="ink" />
-        <circle cx="297" cy="325" r="6" fill="#073b4c" />
-        <path d="M262 352c22 13 48 15 76 6" className="ink-line thin-line" fill="none" />
+        <MascotWhale transform="translate(200 232) scale(.9)" />
       </g>
       <path d="M229 245c74-20 149-20 225 0" fill="none" stroke="#a9efe7" strokeWidth="4" strokeDasharray="11 13" />
       <text x="341" y="235" textAnchor="middle" className="route-label">PROTECTED ROUTE</text>
@@ -239,11 +257,7 @@ function GearArt() {
     <svg viewBox="0 0 560 430" role="img" aria-label="A whale passes safely over on-demand fishing gear without vertical ropes">
       <path d="M0 342c76-44 146 25 220-9 79-37 154 28 230-7 46-21 81-20 110-3v107H0Z" fill="#07546e" />
       <g className="gear-whale swim-reverse">
-        <path d="M63 122c61-69 184-85 270-29 30 20 45 45 39 73-8 36-56 61-124 63-91 2-166-27-194-73-9-15-6-25 9-34Z" fill="#ffcf67" className="ink" />
-        <path d="M369 166c36-4 61-24 77-59 3 33-3 59-17 77 22 5 40 20 55 44-44-1-76-12-99-32" fill="#ffcf67" className="ink" />
-        <path d="M210 220c13 22 37 37 70 45-34 16-66 12-94-13" fill="#f8ba57" className="ink" />
-        <circle cx="133" cy="144" r="7" fill="#073b4c" />
-        <path d="M98 175c25 15 53 18 85 8" fill="none" className="ink-line thin-line" />
+        <MascotWhale transform="translate(58 48) scale(1.03)" />
       </g>
       <g className="rope-system">
         <path d="M430 332c-26-40-24-75 5-104 22-21 31-42 28-64" fill="none" stroke="#ff8e78" strokeWidth="11" strokeLinecap="round" strokeDasharray="18 14" className="retract-rope" />
@@ -281,9 +295,7 @@ function NoiseArt() {
         <path d="M207 286v38M237 286v38" className="ink-line" />
       </g>
       <g className="noise-whale swim">
-        <path d="M298 230c47-56 141-69 207-24 22 15 34 36 28 59-7 29-44 48-96 49-70 1-127-22-149-60-7-11-3-17 10-24Z" fill="#79ded8" className="ink" />
-        <path d="M531 262c20-4 34-16 44-37 2 20-2 35-11 46 12 4 23 12 32 25-26 0-45-6-58-18" fill="#79ded8" className="ink" />
-        <circle cx="355" cy="248" r="6" fill="#073b4c" />
+        <MascotWhale transform="translate(278 192) scale(.78)" />
       </g>
       <g className="whale-call" fill="none" stroke="#b8f2e6" strokeWidth="5" strokeLinecap="round">
         <path d="M385 193c18-18 39-18 58 0"/><path d="M369 174c29-31 63-31 91 0"/>
@@ -319,9 +331,7 @@ function RescueArt() {
       </g>
       <path d="M175 147c60-74 136-74 201-19" fill="none" stroke="#ffe27a" strokeWidth="6" strokeDasharray="10 12" className="alert-line" />
       <g className="rescue-whale swim-reverse">
-        <path d="M176 307c45-48 126-55 181-17 20 14 29 32 23 52-7 25-41 42-89 43-62 1-112-19-131-52-6-10 0-17 16-26Z" fill="#67d9d4" className="ink" />
-        <path d="M377 341c24-4 42-19 54-43 1 23-4 41-15 53 15 3 28 13 39 29-30 0-53-7-68-22" fill="#67d9d4" className="ink" />
-        <circle cx="224" cy="324" r="6" fill="#073b4c" />
+        <MascotWhale transform="translate(165 267) scale(.65)" />
       </g>
       <g className="location-pin">
         <path d="M300 222c0-25 19-44 44-44s44 19 44 44c0 38-44 75-44 75s-44-37-44-75Z" fill="#ff8e78" className="ink" />
@@ -428,18 +438,13 @@ function FinaleWhales() {
   return (
     <svg viewBox="0 0 800 290" aria-hidden="true" className="finale-whales">
       <g className="pod pod-one">
-        <path d="M80 150c58-59 157-66 223-19 22 16 31 35 24 55-9 27-50 42-103 38-68-5-123-27-151-57-7-8-4-13 7-17Z" fill="#59cdc9" className="ink" />
-        <path d="M325 184c26-2 48-18 65-46-2 25-10 44-23 55 16 5 29 15 39 31-30-1-55-10-74-26" fill="#59cdc9" className="ink" />
-        <circle cx="137" cy="164" r="5" fill="#073b4c" />
+        <MascotWhale transform="translate(38 55) scale(1)" />
       </g>
       <g className="pod pod-two">
-        <path d="M493 92c39-42 112-49 160-15 17 12 24 27 18 42-7 21-36 32-74 30-50-3-90-19-109-41-5-6-3-11 5-16Z" fill="#ffcf67" className="ink" />
-        <path d="M670 117c20-2 36-13 47-33-1 19-7 32-16 40 12 4 22 11 29 22-22-1-40-7-54-19" fill="#ffcf67" className="ink" />
-        <circle cx="534" cy="103" r="4" fill="#073b4c" />
+        <MascotWhale transform="translate(490 20) scale(.66)" />
       </g>
       <g className="pod pod-three">
-        <path d="M410 222c26-28 77-33 110-10 12 8 17 19 13 29-5 15-25 23-52 21-35-2-62-13-76-28-4-5-2-8 5-12Z" fill="#b8f2e6" className="ink" />
-        <path d="M532 239c14-1 25-9 33-23 0 13-4 22-11 28 8 2 15 7 20 15-16 0-28-5-38-13" fill="#b8f2e6" className="ink" />
+        <MascotWhale transform="translate(400 172) scale(.45)" />
       </g>
       <TinyFish x={704} y={214} flip color="#ff8e78" />
       <TinyFish x={66} y={68} color="#ffe27a" />
