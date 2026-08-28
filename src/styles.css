@@ -284,6 +284,220 @@ button:focus-visible, a:focus-visible {
 .bubble-burst i { position: absolute; width: 13px; height: 13px; border: 3px solid white; border-radius: 50%; opacity: 0; }
 .bubble-burst.bursting i { animation: burst .9s cubic-bezier(.2,.8,.3,1) both; animation-delay: calc(var(--i) * 28ms); }
 
+/* Double-spaced reading copy throughout the site. Display headings keep their
+   compact line height so the illustrated composition remains legible. */
+p, li, .fact span, .footer-brand small {
+  line-height: 2;
+}
+
+.hero-tagline,
+.formal-title,
+.why-copy > p:first-child,
+.section-lead,
+.detail-list li,
+.support-card p,
+footer > p {
+  line-height: 2;
+}
+
+.full-bill-section {
+  position: relative;
+  padding: 150px max(5vw, 28px);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(255,255,255,.5) 0 3px, transparent 4px),
+    linear-gradient(180deg, #8ce3dc 0%, #d6f2df 17%, #f1ddb4 100%);
+  overflow: hidden;
+}
+
+.full-bill-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: .12;
+  background-image: radial-gradient(var(--ink) .7px, transparent .7px);
+  background-size: 17px 17px;
+}
+
+.document-watermark {
+  position: absolute;
+  top: 120px;
+  right: -80px;
+  width: 380px;
+  color: rgba(7,59,76,.06);
+  transform: rotate(-12deg);
+}
+
+.document-watermark .logo-mark { width: 100%; height: auto; }
+
+.full-bill-intro {
+  position: relative;
+  z-index: 2;
+  width: min(930px, 100%);
+  margin: 0 auto 65px;
+  text-align: center;
+}
+
+.full-bill-intro h2,
+.works-cited-section h2 {
+  margin: 18px 0 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(3.4rem, 7vw, 6rem);
+  line-height: .95;
+  letter-spacing: -.05em;
+}
+
+.full-bill-intro > p {
+  max-width: 670px;
+  margin: auto;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.bill-document {
+  position: relative;
+  z-index: 2;
+  width: min(980px, 100%);
+  margin: auto;
+  padding: clamp(40px, 7vw, 90px);
+  border: 4px solid var(--ink);
+  border-radius: 8px 28px 8px 28px;
+  background:
+    linear-gradient(rgba(7,59,76,.028) 1px, transparent 1px),
+    var(--cream);
+  background-size: 100% 2rem;
+  box-shadow: 14px 16px 0 var(--ink), 0 35px 80px rgba(37,66,64,.22);
+}
+
+.bill-document-header {
+  padding-bottom: 50px;
+  text-align: center;
+  border-bottom: 3px double rgba(7,59,76,.45);
+}
+
+.document-type,
+.introduced {
+  margin: 0;
+  font-size: .76rem;
+  font-weight: 1000;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.bill-meta {
+  margin: 30px 0 35px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.bill-meta p {
+  margin: 0;
+  padding: 17px 20px;
+  display: grid;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: rgba(116,220,216,.15);
+}
+
+.bill-meta span {
+  font-size: .66rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.bill-meta strong { font-family: 'Fredoka', sans-serif; font-size: 1.15rem; }
+
+.bill-document-header h2 {
+  margin: 28px auto;
+  max-width: 770px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+
+.bill-deck {
+  margin: 0 auto;
+  max-width: 760px;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.enactment {
+  margin: 35px auto 0;
+  max-width: 780px;
+  font-style: italic;
+}
+
+.bill-body section { padding: 50px 0; border-bottom: 2px solid rgba(7,59,76,.15); }
+.bill-body section:last-child { border-bottom: 0; padding-bottom: 0; }
+.bill-body h3 {
+  margin: 0 0 24px;
+  color: #086e83;
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.bill-body p { margin: 0 0 1.25rem; font-size: 1rem; }
+.bill-body p:last-child { margin-bottom: 0; }
+.bill-clause { padding-left: 2.1rem; text-indent: -2.1rem; }
+.bill-clause strong { color: #087d99; }
+.bill-conclusion { padding: 38px !important; margin-top: 50px; border: 3px solid var(--ink) !important; border-radius: 18px; background: #b8f2e6; }
+
+.works-cited-section {
+  position: relative;
+  min-height: 900px;
+  padding: 150px max(6vw, 28px);
+  display: grid;
+  align-items: center;
+  color: var(--cream);
+  background:
+    linear-gradient(135deg, rgba(123,221,224,.09), transparent 42%),
+    var(--navy);
+}
+
+.works-cited-section::before,
+.works-cited-section::after {
+  content: '';
+  position: absolute;
+  border: 3px solid rgba(184,242,230,.12);
+  border-radius: 50%;
+}
+
+.works-cited-section::before { width: 240px; height: 240px; top: 90px; right: -80px; }
+.works-cited-section::after { width: 120px; height: 120px; bottom: 70px; left: -40px; }
+
+.works-cited-inner {
+  position: relative;
+  z-index: 2;
+  width: min(980px, 100%);
+  margin: auto;
+}
+
+.works-cited-section h2 { color: var(--sun); }
+.citation-list {
+  margin-top: 50px;
+  padding: clamp(28px, 5vw, 55px);
+  border: 3px solid rgba(184,242,230,.35);
+  border-radius: 24px;
+  background: rgba(2,32,53,.48);
+  box-shadow: 10px 12px 0 rgba(1,23,40,.5);
+}
+
+.citation-list p {
+  margin: 0;
+  padding-left: 2rem;
+  text-indent: -2rem;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.citation-list a { color: var(--sun); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.citation-list a:hover { color: white; }
+
 footer { min-height: 180px; padding: 42px max(6vw, 32px); display: grid; grid-template-columns: 1fr 1.5fr 1fr; align-items: center; gap: 35px; color: var(--cream); background: var(--ink); }
 .footer-brand { display: flex; align-items: center; gap: 11px; }.footer-brand .logo-mark { width: 54px; }.footer-brand span { display: grid; }.footer-brand strong { font-family: 'Fredoka'; letter-spacing: .06em; }.footer-brand small { opacity: .65; font-size: .64rem; }
 footer > p { max-width: 470px; margin: 0; font-size: .79rem; line-height: 1.6; opacity: .72; }
@@ -352,6 +566,10 @@ footer > p { max-width: 470px; margin: 0; font-size: .79rem; line-height: 1.6; o
   .support-section { min-height: auto; padding: 150px 24px 80px; }
   .support-card { grid-template-columns: 1fr; text-align: center; }
   .support-button { width: 100%; }
+  .full-bill-section, .works-cited-section { padding: 115px 22px; }
+  .bill-document { padding: 42px 28px; box-shadow: 8px 9px 0 var(--ink); }
+  .bill-meta { grid-template-columns: 1fr; }
+  .bill-conclusion { padding: 26px !important; }
   footer { grid-template-columns: 1fr; text-align: center; justify-items: center; }
   .footer-links { align-items: center; }
 }
@@ -377,6 +595,14 @@ footer > p { max-width: 470px; margin: 0; font-size: .79rem; line-height: 1.6; o
   .recap span { font-size: .63rem; padding: 8px 10px; }
   .finale-whales { width: 115%; margin-left: -8%; }
   .support-card { padding: 27px 19px; border-width: 3px; box-shadow: 7px 8px 0 var(--ink); }
+  .full-bill-section, .works-cited-section { padding-inline: 15px; }
+  .full-bill-intro h2, .works-cited-section h2 { font-size: 3.15rem; }
+  .bill-document { padding: 34px 20px; border-width: 3px; }
+  .bill-document-header h2 { font-size: 2.35rem; }
+  .bill-body h3 { font-size: 1.55rem; }
+  .bill-body p, .citation-list p { font-size: .91rem; }
+  .bill-clause { padding-left: 1.7rem; text-indent: -1.7rem; }
+  .citation-list { padding: 27px 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

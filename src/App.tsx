@@ -105,6 +105,8 @@ const chapterLinks = [
   { id: 'top', short: 'Start', label: 'Surface' },
   ...policies.map((policy) => ({ id: policy.id, short: policy.number, label: policy.title })),
   { id: 'support', short: '✓', label: 'Support' },
+  { id: 'full-bill', short: '§', label: 'Full Bill' },
+  { id: 'works-cited', short: 'B', label: 'Works Cited' },
 ]
 
 function LogoMark() {
@@ -126,6 +128,8 @@ function SiteHeader() {
       </a>
       <nav aria-label="Main navigation">
         <a href="#zones">The protections</a>
+        <a href="#full-bill">Full bill</a>
+        <a href="#works-cited">Works cited</a>
         <a href="#support" className="nav-cta">Support the act</a>
       </nav>
     </header>
@@ -442,6 +446,108 @@ function FinaleWhales() {
   )
 }
 
+function BillClause({ label, children }: { label: string; children: React.ReactNode }) {
+  return <p className="bill-clause"><strong>({label})</strong> {children}</p>
+}
+
+function FullBill() {
+  return (
+    <section className="full-bill-section story-chapter" id="full-bill" data-chapter="full-bill">
+      <div className="document-watermark" aria-hidden="true"><LogoMark /></div>
+      <div className="full-bill-intro reveal">
+        <span className="eyebrow dark"><i /> THE COMPLETE PROPOSAL</span>
+        <h2>Read the full bill.</h2>
+        <p>Every provision appears below exactly as part of the proposal, with the updated formal title.</p>
+      </div>
+
+      <article className="bill-document reveal" aria-labelledby="bill-document-title">
+        <header className="bill-document-header">
+          <p className="document-type">House of Representatives Bill Document</p>
+          <div className="bill-meta">
+            <p><span>Representative</span><strong>Alexander Sementchenko</strong></p>
+            <p><span>H.R. Number</span><strong>1929</strong></p>
+          </div>
+          <p className="introduced">Introduced the following bill:</p>
+          <h2 id="bill-document-title">Whale Habitat and Life Enforcement (WHALE) Act of 2026</h2>
+          <p className="bill-deck">A Bill to establish national standards to reduce preventable whale deaths and injuries caused by vessel strikes, fishing-gear entanglement, and excessive underwater noise in waters under United States jurisdiction.</p>
+          <p className="enactment">Be it enacted by the Senate and House of Representatives of the United States of America in Congress assembled that,</p>
+        </header>
+
+        <div className="bill-body">
+          <section>
+            <h3>Purpose &amp; Goals</h3>
+            <p>The purpose of this Act is to prevent avoidable whale injuries and deaths, protect important feeding and migration areas, improve whale detection and emergency response, and help affected fishing and maritime businesses adopt safer practices.</p>
+            <p>The goals are to reduce ship strikes and entanglements, limit disruptive underwater noise, use reliable monitoring to guide enforcement, and measure progress through annual public reporting.</p>
+          </section>
+
+          <section>
+            <h3>Section 1: Whale Protection Zones and Vessel Speeds</h3>
+            <BillClause label="a">The National Oceanic and Atmospheric Administration (NOAA) shall designate seasonal whale protection zones along major feeding, breeding, and migration routes in United States waters. NOAA may also create temporary dynamic zones when verified whale detections show an immediate risk of collision.</BillClause>
+            <BillClause label="b">A vessel 65 feet or longer may not exceed 10 knots inside a designated zone. NOAA and the United States Coast Guard shall provide timely notice of zone boundaries and effective dates to vessel operators.</BillClause>
+            <BillClause label="c">Emergency, rescue, and national-security vessels are exempt only when compliance would interfere with an urgent mission. Covered commercial vessels shall maintain required tracking equipment in operating condition so compliance can be verified.</BillClause>
+          </section>
+
+          <section>
+            <h3>Section 2: Fishing-Gear Entanglement Prevention</h3>
+            <BillClause label="a">NOAA shall identify federal fishing areas where vertical buoy lines and other fixed gear create a high risk of whale entanglement. Risk determinations shall use the best available information on whale movements, fishing activity, and recorded entanglements.</BillClause>
+            <BillClause label="b">Within five years after enactment, commercial fixed-gear fisheries operating in designated high-risk areas shall use approved on-demand, ropeless, or reduced-line systems that substantially reduce the number of vertical lines in the water.</BillClause>
+            <BillClause label="c">The Secretary of Commerce shall provide grants covering up to 80 percent of reasonable equipment and training costs for qualifying small fishing businesses. Requirements may be phased in by region to allow safe testing and an orderly transition.</BillClause>
+            <BillClause label="d">Commercial gear shall carry an identifying mark, and lost gear shall be reported within 48 hours when safe and practicable. NOAA shall coordinate a program to locate and remove abandoned fishing gear that threatens whales.</BillClause>
+          </section>
+
+          <section>
+            <h3>Section 3: Reduction of Harmful Underwater Noise</h3>
+            <BillClause label="a">NOAA shall establish science-based noise limits and operating standards for federally permitted seismic surveys, offshore construction, pile driving, and similar activities in important whale habitats.</BillClause>
+            <BillClause label="b">Covered projects shall use trained observers or approved acoustic monitoring before and during operations. An activity shall slow or temporarily stop when a whale enters the safety area established by NOAA.</BillClause>
+            <BillClause label="c">NOAA may restrict especially loud activities during migration, feeding, or breeding seasons and shall encourage quieter available technologies. An urgent public-safety or national-security exemption must be limited to the time and area reasonably necessary.</BillClause>
+          </section>
+
+          <section>
+            <h3>Section 4: Detection, Reporting, and Rescue</h3>
+            <BillClause label="a">NOAA shall expand a whale-detection network using acoustic buoys, aerial surveys, vessel observations, and other reliable technologies. Verified alerts shall be transmitted promptly to nearby vessels and enforcement agencies.</BillClause>
+            <BillClause label="b">A vessel operator involved in a known or suspected whale collision shall report the incident to the Coast Guard or NOAA as soon as safely possible and no later than 24 hours after reaching a location with communications access.</BillClause>
+            <BillClause label="c">The Secretary of Commerce shall fund trained whale-entanglement response teams and maintain a national database of collisions, entanglements, serious injuries, and whale deaths.</BillClause>
+            <BillClause label="d">NOAA shall submit an annual public report to Congress describing violations, enforcement actions, grant spending, detected whale activity, rescue outcomes, and measurable changes in whale injuries and deaths.</BillClause>
+          </section>
+
+          <section>
+            <h3>Section 5: Administration, Enforcement, and Funding</h3>
+            <BillClause label="a">NOAA shall administer this Act, and the Coast Guard shall assist with vessel-safety enforcement. Agencies may use vessel-tracking records, inspection records, and verified observation data as evidence, while providing notice and an opportunity to contest an alleged violation.</BillClause>
+            <BillClause label="b">A person who violates this Act may receive a civil penalty of up to $50,000 for each violation. Repeated or intentional violations may result in increased penalties or temporary suspension of an applicable federal permit or license.</BillClause>
+            <BillClause label="c">There are authorized to be appropriated $100,000,000 for each of fiscal years 2027 through 2031 for fishing-gear transition grants, whale detection, rescue teams, scientific monitoring, public notices, and enforcement.</BillClause>
+            <BillClause label="d">The vessel-speed requirements shall take effect one year after enactment, and the fishing-gear transition shall follow the schedule in Section 2. NOAA shall consult states, Tribal governments, fishing communities, conservation scientists, and maritime industries when issuing rules. Nothing in this Act diminishes treaty or lawful subsistence rights.</BillClause>
+          </section>
+
+          <section className="bill-conclusion">
+            <h3>Conclusion</h3>
+            <p>This Act addresses three preventable human-caused dangers to whales while giving affected industries time, financial assistance, and clear standards for compliance.</p>
+            <p>Its monitoring and reporting requirements will allow Congress to judge whether the protections are working and adjust them when necessary.</p>
+          </section>
+        </div>
+      </article>
+    </section>
+  )
+}
+
+function WorksCited() {
+  return (
+    <section className="works-cited-section story-chapter" id="works-cited" data-chapter="works-cited">
+      <div className="works-cited-inner reveal">
+        <span className="eyebrow light"><i /> BIBLIOGRAPHY</span>
+        <h2>Works Cited</h2>
+        <div className="citation-list">
+          <p>Laist, David W., et al. “Effectiveness of Mandatory Vessel Speed Limits for Protecting North Atlantic Right Whales.” <cite>Endangered Species Research</cite>, vol. 23, no. 2, 2014, pp. 133–147. Accessed 28 Aug. 2026.</p>
+          <p>National Oceanic and Atmospheric Administration. “<a href="https://www.fisheries.noaa.gov/new-england-mid-atlantic/marine-mammal-protection/developing-viable-demand-gear-systems" target="_blank" rel="noreferrer">Developing Viable On-Demand Gear Systems</a>.” <cite>NOAA Fisheries</cite>, 1 Apr. 2026. Accessed 28 Aug. 2026.</p>
+          <p>National Oceanic and Atmospheric Administration. “<a href="https://www.fisheries.noaa.gov/national/marine-life-distress/large-whale-entanglement-response" target="_blank" rel="noreferrer">Large Whale Entanglement Response</a>.” <cite>NOAA Fisheries</cite>, 2 Feb. 2026. Accessed 28 Aug. 2026.</p>
+          <p>National Oceanic and Atmospheric Administration. “<a href="https://www.fisheries.noaa.gov/national/science-data/ocean-noise" target="_blank" rel="noreferrer">Ocean Noise</a>.” <cite>NOAA Fisheries</cite>, 8 Apr. 2026. Accessed 28 Aug. 2026.</p>
+          <p>National Oceanic and Atmospheric Administration. “<a href="https://www.fisheries.noaa.gov/national/endangered-species-conservation/reducing-vessel-strikes-north-atlantic-right-whales" target="_blank" rel="noreferrer">Reducing Vessel Strikes to North Atlantic Right Whales</a>.” <cite>NOAA Fisheries</cite>, 3 Aug. 2026. Accessed 28 Aug. 2026.</p>
+          <p>United States, Congress. <cite>Marine Mammal Protection Act of 1972</cite>. <cite>United States Code</cite>, title 16, ch. 31. Legal Information Institute, Cornell Law School, <a href="https://www.law.cornell.edu/uscode/text/16/chapter-31" target="_blank" rel="noreferrer">www.law.cornell.edu/uscode/text/16/chapter-31</a>. Accessed 28 Aug. 2026.</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function App() {
   const [activeId, setActiveId] = useState('top')
   const [supported, setSupported] = useState(() => {
@@ -499,10 +605,10 @@ function App() {
           <div className="hero-content reveal is-visible">
             <div className="hero-copy">
               <div className="bill-badge"><span>H.R. 1929</span> Fictional classroom proposal</div>
-              <p className="hero-kicker">Whale Habitat &amp; Life Enforcement</p>
+              <p className="hero-kicker">Whale Habitat and Life Enforcement</p>
               <h1>WHALE<br /><em>ACT</em></h1>
               <p className="hero-tagline">One ocean. Five protections.<br />A safer future for whales.</p>
-              <p className="formal-title">A visual guide to the <strong>Whale Protection and Vessel Safety Act of 2026</strong></p>
+              <p className="formal-title">A visual guide to the <strong>Whale Habitat and Life Enforcement (WHALE) Act of 2026</strong></p>
               <div className="hero-actions">
                 <a className="primary-button" href="#zones">Dive into the bill <span>↓</span></a>
                 <a className="text-link" href="#why">Why it matters</a>
@@ -560,11 +666,14 @@ function App() {
             </div>
           </div>
         </section>
+
+        <FullBill />
+        <WorksCited />
       </main>
 
       <footer>
-        <div className="footer-brand"><LogoMark /><span><strong>WHALE ACT</strong><small>Whale Habitat &amp; Life Enforcement</small></span></div>
-        <p>A classroom campaign for H.R. 1929, the fictional Whale Protection and Vessel Safety Act of 2026.</p>
+        <div className="footer-brand"><LogoMark /><span><strong>WHALE ACT</strong><small>Whale Habitat and Life Enforcement</small></span></div>
+        <p>A classroom campaign for H.R. 1929, the fictional Whale Habitat and Life Enforcement (WHALE) Act of 2026.</p>
         <div className="footer-links">
           <a href="https://www.fisheries.noaa.gov/national/endangered-species-conservation/vessel-strikes" target="_blank" rel="noreferrer">NOAA vessel-strike facts</a>
           <a href="#top">Back to top ↑</a>
