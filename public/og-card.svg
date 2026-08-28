@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#8CE3DC"/>
+      <stop offset="1" stop-color="#087D99"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="36" fill="url(#ocean)"/>
+  <circle cx="1015" cy="114" r="62" fill="#FFE780"/>
+  <path d="M0 165 Q180 112 355 168 T710 168 T1065 168 T1420 168 V630 H0Z" fill="#20B9C1" opacity=".55"/>
+  <path d="M0 230 Q180 180 355 234 T710 234 T1065 234 T1420 234 V630 H0Z" fill="#087D99"/>
+  <g transform="translate(720 250)" stroke="#073B4C" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M27 122c65-78 208-106 319-38 45 28 67 64 59 104-9 45-64 76-145 79-111 4-202-28-236-86-12-21-11-40 3-59Z" fill="#5ED3CF"/>
+    <path d="M404 190c44-7 75-31 94-69 4 38-2 68-18 90 25 8 48 29 67 62-52-4-91-17-117-40" fill="#5ED3CF"/>
+    <path d="M208 258c15 24 44 42 87 55-44 17-83 10-115-20" fill="#5ED3CF"/>
+    <circle cx="115" cy="145" r="8" fill="#073B4C" stroke="none"/>
+    <path d="M64 191c28 19 60 24 96 15" fill="none"/>
+    <path d="M40 97c-7-35 4-58 35-72-3 29 10 48 38 56" fill="none"/>
+  </g>
+  <g fill="#fff">
+    <text x="86" y="170" font-family="Arial Rounded MT Bold,Arial,sans-serif" font-size="34" font-weight="700" letter-spacing="5">WHALE HABITAT AND LIFE ENFORCEMENT</text>
+    <text x="82" y="318" font-family="Arial Rounded MT Bold,Arial,sans-serif" font-size="124" font-weight="900">WHALE ACT</text>
+    <text x="88" y="390" font-family="Arial,sans-serif" font-size="35" font-weight="600">One ocean. Five protections. A safer future.</text>
+  </g>
+  <g fill="#B8F0E4" opacity=".9">
+    <circle cx="680" cy="500" r="14"/><circle cx="640" cy="446" r="8"/><circle cx="1080" cy="470" r="11"/>
+  </g>
+</svg>
