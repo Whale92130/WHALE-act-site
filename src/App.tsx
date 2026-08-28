@@ -607,7 +607,7 @@ function App() {
               <div className="bill-badge"><span>H.R. 1929</span> Fictional classroom proposal</div>
               <p className="hero-kicker">Whale Habitat and Life Enforcement</p>
               <h1>WHALE<br /><em>ACT</em></h1>
-              <p className="hero-tagline">One ocean. Five protections.<br />A safer future for whales.</p>
+              <p className="hero-tagline">Whale Habitat and Life<br />Enforcement Act of 2026</p>
               <p className="formal-title">A visual guide to the <strong>Whale Habitat and Life Enforcement (WHALE) Act of 2026</strong></p>
               <div className="hero-actions">
                 <a className="primary-button" href="#zones">Dive into the bill <span>↓</span></a>
