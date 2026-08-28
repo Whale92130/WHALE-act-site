@@ -111,11 +111,12 @@ const chapterLinks = [
 
 function LogoMark() {
   return (
-    <svg viewBox="0 0 64 56" aria-hidden="true" className="logo-mark">
-      <path d="M8 34c9 1 15-3 19-11 2 8 0 15-4 20 6 0 11 3 16 8-12 2-21-1-27-8" />
-      <path d="M28 29c7-11 16-17 27-18-2 16-11 27-27 31" />
-      <circle cx="48" cy="21" r="2.5" />
-    </svg>
+    <img
+      src={`${import.meta.env.BASE_URL}whale-mark.svg`}
+      alt=""
+      aria-hidden="true"
+      className="logo-mark"
+    />
   )
 }
 

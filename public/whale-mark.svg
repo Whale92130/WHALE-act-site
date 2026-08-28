@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">WHALE Act emblem</title>
+  <desc id="desc">A whale tail rising above two ocean waves inside a circle.</desc>
+  <defs>
+    <clipPath id="circle-clip">
+      <circle cx="256" cy="256" r="220"/>
+    </clipPath>
+  </defs>
+  <circle cx="256" cy="256" r="226" fill="#fff7e4" stroke="#073b4c" stroke-width="24"/>
+  <g clip-path="url(#circle-clip)">
+    <path d="M-10 382c54-58 118-65 181-18 65 48 126 52 185-5 54-52 116-49 166 0v179H-10Z" fill="#073b4c"/>
+    <path d="M-2 383c58-39 110-38 163 0 61 44 123 46 185-4 55-44 109-43 166-1" fill="none" stroke="#fff7e4" stroke-width="18" stroke-linecap="round"/>
+    <path d="M20 428c57-32 105-28 155 5 55 36 111 36 165-6 49-38 99-41 152-10" fill="none" stroke="#6ad7d2" stroke-width="15" stroke-linecap="round"/>
+    <path d="M253 342c-2-49-11-87-35-113-20-22-48-38-78-59-41-29-61-64-59-110 47 45 103 37 142 76 18 18 29 39 34 63 7-22 19-41 38-56 42-34 96-20 142-58-4 47-29 79-73 103-33 18-63 29-84 48-25 23-33 58-31 106Z" fill="#073b4c"/>
+    <path d="M243 248c8-19 16-36 14-58" fill="none" stroke="#fff7e4" stroke-width="11" stroke-linecap="round"/>
+  </g>
+</svg>

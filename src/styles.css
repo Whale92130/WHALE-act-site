@@ -94,9 +94,7 @@ button:focus-visible, a:focus-visible {
   letter-spacing: .06em;
 }
 
-.logo-mark { width: 46px; height: 40px; overflow: visible; }
-.logo-mark path { fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.logo-mark circle { fill: currentColor; }
+.logo-mark { width: 46px; height: 46px; display: block; object-fit: contain; }
 
 .site-header nav { display: flex; align-items: center; gap: 30px; }
 .site-header nav a { font-weight: 800; text-decoration: none; font-size: .92rem; }
@@ -499,7 +497,7 @@ footer > p {
 .citation-list a:hover { color: white; }
 
 footer { min-height: 180px; padding: 42px max(6vw, 32px); display: grid; grid-template-columns: 1fr 1.5fr 1fr; align-items: center; gap: 35px; color: var(--cream); background: var(--ink); }
-.footer-brand { display: flex; align-items: center; gap: 11px; }.footer-brand .logo-mark { width: 54px; }.footer-brand span { display: grid; }.footer-brand strong { font-family: 'Fredoka'; letter-spacing: .06em; }.footer-brand small { opacity: .65; font-size: .64rem; }
+.footer-brand { display: flex; align-items: center; gap: 11px; }.footer-brand .logo-mark { width: 58px; height: 58px; }.footer-brand span { display: grid; }.footer-brand strong { font-family: 'Fredoka'; letter-spacing: .06em; }.footer-brand small { opacity: .65; font-size: .64rem; }
 footer > p { max-width: 470px; margin: 0; font-size: .79rem; line-height: 1.6; opacity: .72; }
 .footer-links { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; font-size: .76rem; font-weight: 800; }.footer-links a { text-underline-offset: 4px; }
 
