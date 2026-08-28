@@ -169,28 +169,14 @@ function TinyFish({ x, y, flip = false, color = '#b8f2e6' }: { x: number; y: num
 
 function MascotWhale({ transform, className = '' }: { transform?: string; className?: string }) {
   return (
-    <g transform={transform} className={`mascot-whale ${className}`}>
-      <path
-        d="M29 108C25 51 63 19 126 17c66-2 105 25 139 77 19 29 37 40 57 34 8-3 14-8 19-15-2 15 2 26 12 34-14-1-24 2-31 10 14 4 28 3 42-5-8 20-26 31-50 28-18-2-31-10-39-18-25 23-63 35-113 34-75-2-126-32-133-88Z"
-        fill="#7599c6"
-        stroke="#073b4c"
-        strokeWidth="8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M32 112c24-8 49-1 76 15 31 18 54 42 86 53 28 10 55 4 78-11-25 23-63 35-111 33-72-3-119-34-129-90Z" fill="#fff3d8" stroke="#073b4c" strokeWidth="6" strokeLinejoin="round" />
-      <path d="M54 116c4 29 18 52 40 69M79 119c6 34 24 59 51 76M108 128c10 32 31 55 61 72M138 145c13 25 31 43 55 55" fill="none" stroke="#d7b982" strokeWidth="5" strokeLinecap="round" />
-      <path d="M180 171c8 27 25 46 52 57-3-32-10-57-30-73" fill="#6687b7" stroke="#073b4c" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M112 186c7 23 21 37 43 43 3-16 2-27-2-34" fill="#6687b7" stroke="#073b4c" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
-      <ellipse cx="106" cy="89" rx="18" ry="22" fill="#073b4c" />
-      <circle cx="100" cy="82" r="8" fill="white" />
-      <circle cx="112" cy="98" r="4" fill="white" />
-      <ellipse cx="135" cy="119" rx="18" ry="10" fill="#ff9da2" />
-      <path d="M56 111c19 10 39 10 53-3" fill="none" stroke="#073b4c" strokeWidth="7" strokeLinecap="round" />
-      <ellipse cx="148" cy="29" rx="10" ry="4" fill="#073b4c" />
-      <ellipse cx="170" cy="32" rx="8" ry="4" fill="#073b4c" />
-      <path d="M67 55c34-26 88-34 138-11" fill="none" stroke="#b9d8ed" strokeWidth="7" strokeLinecap="round" opacity=".8" />
-    </g>
+    <image
+      href={`${import.meta.env.BASE_URL}whale-mascot.png`}
+      width="390"
+      height="250"
+      transform={transform}
+      className={`mascot-whale ${className}`}
+      preserveAspectRatio="xMidYMid meet"
+    />
   )
 }
 
@@ -211,10 +197,10 @@ function HeroWhale() {
       </g>
       <path className="surface-line" d="M17 161c59-31 120 31 179 0s120 31 180 0 120 31 180 0 101 23 150 3" />
       <g className="hero-whale">
-        <MascotWhale transform="translate(70 205) scale(1.55)" />
-        <path d="M300 249c-9-38 4-63 38-77-3 30 10 49 37 58" fill="none" className="ink-line spout" />
-        <circle cx="324" cy="154" r="11" fill="#b8f2e6" />
-        <circle cx="355" cy="119" r="7" fill="#b8f2e6" />
+        <MascotWhale transform="translate(70 170) scale(1.5)" />
+        <path d="M292 213c-9-38 4-63 38-77-3 30 10 49 37 58" fill="none" className="ink-line spout" />
+        <circle cx="316" cy="118" r="11" fill="#b8f2e6" />
+        <circle cx="347" cy="83" r="7" fill="#b8f2e6" />
       </g>
       <TinyFish x={547} y={252} />
       <TinyFish x={590} y={289} flip color="#ffe27a" />
