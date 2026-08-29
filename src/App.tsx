@@ -112,7 +112,7 @@ const chapterLinks = [
 function LogoMark() {
   return (
     <img
-      src={`${import.meta.env.BASE_URL}whale-mark.svg`}
+      src={`${import.meta.env.BASE_URL}whale-mark.png`}
       alt=""
       aria-hidden="true"
       className="logo-mark"
@@ -169,14 +169,21 @@ function TinyFish({ x, y, flip = false, color = '#b8f2e6' }: { x: number; y: num
 
 function MascotWhale({ transform, className = '' }: { transform?: string; className?: string }) {
   return (
-    <image
-      href={`${import.meta.env.BASE_URL}whale-mascot.png`}
+    <svg
       width="390"
       height="250"
+      viewBox="100 195 550 360"
       transform={transform}
       className={`mascot-whale ${className}`}
       preserveAspectRatio="xMidYMid meet"
-    />
+      overflow="visible"
+    >
+      <image
+        href={`${import.meta.env.BASE_URL}whale-mascot.png`}
+        width="750"
+        height="810"
+      />
+    </svg>
   )
 }
 
@@ -197,13 +204,8 @@ function HeroWhale() {
       </g>
       <path className="surface-line" d="M17 161c59-31 120 31 179 0s120 31 180 0 120 31 180 0 101 23 150 3" />
       <g className="hero-whale">
-        <MascotWhale transform="translate(70 170) scale(1.5)" />
-        <path d="M292 213c-9-38 4-63 38-77-3 30 10 49 37 58" fill="none" className="ink-line spout" />
-        <circle cx="316" cy="118" r="11" fill="#b8f2e6" />
-        <circle cx="347" cy="83" r="7" fill="#b8f2e6" />
+        <MascotWhale transform="translate(70 170) scale(1.5)" className="whale-shade-surface" />
       </g>
-      <TinyFish x={547} y={252} />
-      <TinyFish x={590} y={289} flip color="#ffe27a" />
       <g fill="none" stroke="#b8f2e6" strokeWidth="5">
         <circle cx="576" cy="452" r="12" /><circle cx="608" cy="413" r="7" /><circle cx="58" cy="411" r="8" />
       </g>
@@ -213,50 +215,89 @@ function HeroWhale() {
 
 function ZonesArt() {
   return (
-    <svg viewBox="0 0 560 430" role="img" aria-label="A ship slows to ten knots near a protected whale route">
-      <g className="scene-sun" fill="#ffe37c"><circle cx="72" cy="58" r="33" /><path d="M72 7v18M72 92v18M21 58h18M105 58h18" className="sun-lines" /></g>
-      <g className="scene-boat boat-bob">
-        <path d="M247 102h194l-30 68H278Z" fill="#fff5d9" className="ink" />
-        <path d="M306 54h81v48h-81Z" fill="#ff8e78" className="ink" />
-        <path d="M321 68h21v19h-21ZM352 68h21v19h-21Z" fill="#9ee7e6" className="ink thin" />
-        <path d="M347 52V30" className="ink-line" />
+    <svg viewBox="-28 -24 616 486" role="img" aria-label="A cartoon cargo ship travels at ten knots above a whale inside a protected-zone bubble">
+      <g className="speedometer" transform="translate(-2 -160)">
+        <circle cx="88" cy="270" r="55" fill="#fff5d9" className="ink" />
+        <circle cx="88" cy="270" r="43" fill="#9ee7e6" stroke="#073b4c" strokeWidth="4" />
+        <path d="M51 265a38 38 0 0 1 74 0" fill="none" stroke="#ff8e78" strokeWidth="8" strokeLinecap="round" />
+        <path d="M59.4 253.5 50.8 248.5M71.5 241.4 66.5 232.8M88 237 88 227M104.5 241.4 109.5 232.8M116.6 253.5 125.2 248.5" className="ink-line speed-ticks" />
+        <path d="M88 270 105.2 245.4" className="ink-line speed-needle" />
+        <circle cx="88" cy="270" r="8" fill="#073b4c" />
+        <rect x="52" y="284" width="72" height="25" rx="12.5" fill="#fff7e4" stroke="#073b4c" strokeWidth="3" />
+        <text x="88" y="301" textAnchor="middle" className="svg-label speed-label">10 KNOTS</text>
       </g>
-      <path d="M29 174c43-22 86 22 129 0s86 22 129 0 86 22 129 0 86 22 118 4" className="water-line" />
-      <g className="buoy bob">
-        <path d="M154 193v104" className="ink-line" />
-        <path d="M126 224c2-24 13-40 28-40s26 16 28 40Z" fill="#ffcf67" className="ink" />
-        <path d="M132 239h44l-7 48h-30Z" fill="#ff8e78" className="ink" />
-        <rect x="113" y="295" width="82" height="51" rx="12" fill="#fff7e4" className="ink" />
-        <text x="154" y="329" textAnchor="middle" className="svg-label">10 KNOTS</text>
+
+      <g transform="translate(12 -8)">
+        <g className="cargo-ship boat-bob">
+          <path d="M211 126h317l-37 58H253Z" fill="#fff5d9" className="ink" />
+          <path d="M243 160h266l-18 24H253Z" fill="#ff8e78" className="ink thin" />
+          <rect x="244" y="78" width="66" height="48" rx="4" fill="#ff8e78" className="ink thin" />
+          <rect x="310" y="78" width="66" height="48" rx="4" fill="#ffcf67" className="ink thin" />
+          <rect x="376" y="78" width="66" height="48" rx="4" fill="#7bdde0" className="ink thin" />
+          <rect x="278" y="35" width="66" height="43" rx="4" fill="#7bdde0" className="ink thin" />
+          <rect x="344" y="35" width="66" height="43" rx="4" fill="#ff8e78" className="ink thin" />
+          <path d="M445 62h57v64h-57Z" fill="#fff5d9" className="ink" />
+          <path d="M457 77h32v19h-32Z" fill="#9ee7e6" className="ink thin" />
+          <path d="M473 61V36h22" className="ink-line thin-line" />
+          <path d="M497 36c13 0 20 6 27 13" fill="none" stroke="#b8f2e6" strokeWidth="7" strokeLinecap="round" opacity=".65" />
+        </g>
       </g>
+
+      <path d="M22 187c43-22 86 22 129 0s86 22 129 0 86 22 129 0 86 22 129 0" className="water-line" />
+
+      <g className="zone-bubble" transform="translate(8 30)">
+        <ellipse cx="330" cy="309" rx="191" ry="106" fill="#7bdde0" fillOpacity=".13" stroke="#b8f2e6" strokeWidth="6" />
+        <path d="M167 278c18-37 45-59 82-70M435 376c29-18 48-42 58-72" fill="none" stroke="#ffffff" strokeWidth="5" strokeLinecap="round" opacity=".5" />
+        <circle cx="177" cy="330" r="9" fill="#ffffff" opacity=".55" />
+        <circle cx="474" cy="272" r="6" fill="#ffffff" opacity=".55" />
+        <rect x="233" y="187" width="194" height="43" rx="21.5" fill="#fff7e4" className="ink thin" />
+        <text x="330" y="214" textAnchor="middle" className="svg-label zone-label">PROTECTED ZONE</text>
+      </g>
+
       <g className="mini-whale swim">
-        <MascotWhale transform="translate(200 232) scale(.9)" />
+        <MascotWhale transform="translate(200 260) scale(.72)" className="whale-shade-zones" />
       </g>
-      <path d="M229 245c74-20 149-20 225 0" fill="none" stroke="#a9efe7" strokeWidth="4" strokeDasharray="11 13" />
-      <text x="341" y="235" textAnchor="middle" className="route-label">PROTECTED ROUTE</text>
     </svg>
   )
 }
 
 function GearArt() {
   return (
-    <svg viewBox="0 0 560 430" role="img" aria-label="A whale passes safely over on-demand fishing gear without vertical ropes">
+    <svg viewBox="0 0 560 430" role="img" aria-label="Large cartoon scissors cut a fishing net away from a whale">
       <path d="M0 342c76-44 146 25 220-9 79-37 154 28 230-7 46-21 81-20 110-3v107H0Z" fill="#07546e" />
-      <g className="gear-whale swim-reverse">
-        <MascotWhale transform="translate(58 48) scale(1.03)" />
+      <g className="gear-whale">
+        <MascotWhale transform="translate(300 72) scale(-.72 .72)" className="whale-shade-gear" />
       </g>
-      <g className="rope-system">
-        <path d="M430 332c-26-40-24-75 5-104 22-21 31-42 28-64" fill="none" stroke="#ff8e78" strokeWidth="11" strokeLinecap="round" strokeDasharray="18 14" className="retract-rope" />
-        <path d="M397 331h77l-9 61h-59Z" fill="#ff8e78" className="ink" />
-        <path d="M411 345h50M410 364h52" className="ink-line thin-line" />
-        <circle cx="463" cy="154" r="20" fill="#ffe27a" className="ink signal-float" />
-        <path d="M451 154h24M463 142v24" className="ink-line thin-line" />
+
+      <g className="rope-top">
+        <path d="M322 24c-11 64 5 137-2 206" fill="none" stroke="#ffcf67" strokeWidth="11" strokeLinecap="round" />
       </g>
-      <g className="signal-rings" fill="none" stroke="#b8f2e6" strokeWidth="5" strokeLinecap="round">
-        <path d="M480 119c17 9 27 22 31 39"/><path d="M490 95c28 14 46 36 53 64"/>
+      <g className="rope-bottom">
+        <path d="M320 230c-7 68 13 117 5 177" fill="none" stroke="#ffcf67" strokeWidth="11" strokeLinecap="round" />
       </g>
-      <rect x="37" y="288" width="184" height="61" rx="30" fill="#fff7e4" className="ink" />
-      <text x="129" y="326" textAnchor="middle" className="svg-label large">ROPELESS • SAFER</text>
+
+      <g className="scissors">
+        <g className="scissor-half scissor-top">
+          <path d="M410 230 313 189 394 241Z" fill="#e8f6f2" className="ink thin" />
+          <path d="M410 230 461 286" fill="none" stroke="#073b4c" strokeWidth="16" strokeLinecap="round" />
+          <circle cx="478" cy="304" r="29" fill="#ff8e78" className="ink" />
+          <circle cx="478" cy="304" r="12" fill="#063b58" />
+        </g>
+        <g className="scissor-half scissor-bottom">
+          <path d="M410 230 313 271 394 219Z" fill="#e8f6f2" className="ink thin" />
+          <path d="M410 230 461 174" fill="none" stroke="#073b4c" strokeWidth="16" strokeLinecap="round" />
+          <circle cx="478" cy="156" r="29" fill="#7bdde0" className="ink" />
+          <circle cx="478" cy="156" r="12" fill="#063b58" />
+        </g>
+        <circle cx="410" cy="230" r="13" fill="#ffcf67" className="ink thin" />
+      </g>
+
+      <g className="cut-spark" fill="none" stroke="#fff7e4" strokeWidth="6" strokeLinecap="round">
+        <path d="M302 209 291 196M295 230h-19M302 251l-12 13" />
+      </g>
+
+      <rect x="38" y="346" width="189" height="50" rx="25" fill="#fff7e4" className="ink" />
+      <text x="132.5" y="378" textAnchor="middle" className="svg-label large">CUT • RELEASE</text>
       <g className="kelp" fill="#45bb84" stroke="#073b4c" strokeWidth="5">
         <path d="M31 393c20-29-5-47 14-69 21 29 1 45 18 69"/><path d="M495 392c18-27-3-45 15-67 19 25 3 43 20 67"/>
       </g>
@@ -266,30 +307,53 @@ function GearArt() {
 
 function NoiseArt() {
   return (
-    <svg viewBox="0 0 560 430" role="img" aria-label="Monitoring quiets construction noise so a whale can communicate">
-      <g className="pile-driver">
-        <path d="M52 82h95v245H52Z" fill="#ffcf67" className="ink" />
-        <path d="M39 80h121v35H39Z" fill="#ff8e78" className="ink" />
-        <path d="M79 114h41v225H79Z" fill="#fff5d9" className="ink" />
-        <path d="M35 348h138" className="ink-line" />
+    <svg viewBox="0 0 560 430" role="img" aria-label="A muted underwater drill works in the seabed while a whale swims nearby">
+      <path d="M0 344c61-36 119 18 181-4 67-24 130 20 195-4 70-27 127-20 184 2v92H0Z" fill="#d8b879" stroke="#073b4c" strokeWidth="7" strokeLinejoin="round" />
+      <path d="M3 347c58-31 116 19 178-3 67-24 130 20 195-4 69-26 126-20 181 1" fill="none" stroke="#f5d99d" strokeWidth="7" strokeLinecap="round" opacity=".8" />
+      <g className="seabed-rocks" stroke="#073b4c" strokeWidth="5" strokeLinejoin="round">
+        <polygon points="25,409 34,385 55,368 82,375 101,409" fill="#8f9a8a" />
+        <polygon points="215,408 224,387 246,374 268,384 283,408" fill="#ae8f70" />
+        <polygon points="421,410 432,382 459,366 486,378 508,410" fill="#83998f" />
       </g>
-      <g className="sound-waves" fill="none" stroke="#ff8e78" strokeWidth="10" strokeLinecap="round">
-        <path d="M182 144c33 20 33 52 0 72"/><path d="M210 118c58 36 58 90 0 126"/><path d="M241 94c80 49 80 125 0 174"/>
+      <g className="sand-speckles" fill="#9f7f55" opacity=".65">
+        <circle cx="126" cy="389" r="5" /><circle cx="173" cy="412" r="4" /><circle cx="315" cy="380" r="5" /><circle cx="358" cy="408" r="4" /><circle cx="527" cy="386" r="5" />
       </g>
-      <g className="pause-badge">
-        <circle cx="222" cy="305" r="48" fill="#a6e679" className="ink" />
-        <path d="M207 286v38M237 286v38" className="ink-line" />
+      <g className="drill-hole" fill="none" stroke="#073b4c" strokeWidth="7" strokeLinecap="round">
+        <path d="M105 352q13-12 27-13M147 339q15 2 28 13" />
       </g>
+
+      <g transform="translate(16 18) scale(.9)">
+        <g className="underwater-drill">
+          <path d="M90 89V65c0-22 17-39 39-39h28c22 0 39 17 39 39v24" fill="none" stroke="#073b4c" strokeWidth="15" strokeLinecap="round" />
+          <rect x="49" y="82" width="181" height="111" rx="27" fill="#ffcf67" className="ink" />
+          <rect x="71" y="104" width="74" height="43" rx="12" fill="#9ee7e6" className="ink thin" />
+          <circle cx="186" cy="136" r="22" fill="#ff8e78" className="ink thin" />
+          <path d="M82 174h114" className="ink-line thin-line" opacity=".35" />
+          <rect x="112" y="193" width="55" height="35" rx="8" fill="#fff5d9" className="ink" />
+
+          <g className="drill-bit">
+            <path d="M139 227v145" fill="none" stroke="#e8f6f2" strokeWidth="18" strokeLinecap="round" />
+            <path d="m112 248 54 22-54 23 54 23-54 23 54 23" fill="none" stroke="#ff8e78" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="m119 371 20 34 20-34Z" fill="#e8f6f2" className="ink thin" />
+          </g>
+        </g>
+      </g>
+
+      <g className="mute-badge">
+        <circle cx="253" cy="112" r="52" fill="#fff7e4" />
+        <path d="M221 105h16l22-19v52l-22-19h-16Z" fill="#073b4c" stroke="#073b4c" strokeWidth="5" strokeLinejoin="round" />
+        <path d="m218 77 70 70" fill="none" stroke="#ff8e78" strokeWidth="11" strokeLinecap="round" />
+        <circle cx="253" cy="112" r="52" fill="none" className="ink" />
+      </g>
+
       <g className="noise-whale swim">
-        <MascotWhale transform="translate(278 192) scale(.78)" />
+        <MascotWhale transform="translate(261 158) scale(.75)" className="whale-shade-noise" />
       </g>
-      <g className="whale-call" fill="none" stroke="#b8f2e6" strokeWidth="5" strokeLinecap="round">
-        <path d="M385 193c18-18 39-18 58 0"/><path d="M369 174c29-31 63-31 91 0"/>
-      </g>
-      <g className="meter">
-        <rect x="326" y="335" width="190" height="54" rx="27" fill="#fff7e4" className="ink" />
-        <rect x="342" y="351" width="88" height="22" rx="11" fill="#a6e679" />
-        <text x="473" y="370" textAnchor="middle" className="svg-label">QUIETER</text>
+
+      <g className="drill-debris" fill="#ffcf67">
+        <circle className="debris-one" cx="104" cy="361" r="8" />
+        <circle className="debris-two" cx="173" cy="370" r="6" />
+        <circle className="debris-three" cx="193" cy="349" r="5" />
       </g>
     </svg>
   )
@@ -297,32 +361,41 @@ function NoiseArt() {
 
 function RescueArt() {
   return (
-    <svg viewBox="0 0 560 430" role="img" aria-label="A smart buoy detects a whale and alerts a nearby rescue boat">
-      <g className="rescue-boat boat-bob">
-        <path d="M325 101h169l-26 60H350Z" fill="#fff5d9" className="ink" />
-        <path d="M369 57h74v44h-74Z" fill="#ff8e78" className="ink" />
-        <path d="M383 68h46v21h-46Z" fill="#9ee7e6" className="ink thin" />
-        <path d="M406 57V34M406 34l25 12" className="ink-line thin-line" />
-        <path d="M438 132h28" stroke="#ff8e78" strokeWidth="8" />
+    <svg viewBox="0 0 560 430" role="img" aria-label="A marine radar map locates three whales for monitoring and rescue teams">
+      <defs>
+        <clipPath id="whale-radar-screen">
+          <circle cx="280" cy="215" r="204" />
+        </clipPath>
+      </defs>
+
+      <g clipPath="url(#whale-radar-screen)">
+        <circle cx="280" cy="215" r="204" fill="#27aeba" opacity=".26" />
+        <g className="radar-map-grid" fill="none" stroke="#b8f2e6" strokeWidth="2" opacity=".25">
+          <circle cx="280" cy="215" r="68" />
+          <circle cx="280" cy="215" r="136" />
+          <circle cx="280" cy="215" r="202" />
+          <path d="M76 215h408M280 11v408M96 123c117 42 251 42 368 0M96 307c117-42 251-42 368 0" />
+        </g>
+
+        <path d="M280 215 280 11A204 204 0 0 1 473 145Z" fill="#b8f2e6" opacity=".15" className="radar-sweep" />
+
+        <g className="radar-whale radar-whale-one">
+          <circle cx="190" cy="144" r="37" fill="none" stroke="#ffe27a" strokeWidth="5" className="radar-ping" />
+          <image href={`${import.meta.env.BASE_URL}radar-whale.png`} x="150" y="104" width="80" height="80" transform="rotate(-32 190 144)" />
+        </g>
+        <g className="radar-whale radar-whale-two">
+          <circle cx="367" cy="195" r="42" fill="none" stroke="#ffe27a" strokeWidth="5" className="radar-ping radar-ping-two" />
+          <image href={`${import.meta.env.BASE_URL}radar-whale.png`} x="322" y="150" width="90" height="90" transform="rotate(48 367 195)" />
+        </g>
+        <g className="radar-whale radar-whale-three">
+          <circle cx="245" cy="309" r="34" fill="none" stroke="#ffe27a" strokeWidth="5" className="radar-ping radar-ping-three" />
+          <image href={`${import.meta.env.BASE_URL}radar-whale.png`} x="211" y="275" width="68" height="68" transform="rotate(18 245 309)" />
+        </g>
+
+        <circle cx="280" cy="215" r="8" fill="#ff8e78" stroke="#fff5d9" strokeWidth="4" />
       </g>
-      <path d="M13 166c52-25 101 25 153 0s101 25 153 0 101 25 153 0 80 17 94 12" className="water-line" />
-      <g className="smart-buoy bob">
-        <path d="M132 185v111" className="ink-line" />
-        <path d="M105 218c3-25 12-39 27-39s24 14 27 39Z" fill="#ffcf67" className="ink" />
-        <path d="M111 232h42l-7 54h-28Z" fill="#ff8e78" className="ink" />
-        <circle cx="132" cy="197" r="6" fill="#073b4c" />
-      </g>
-      <g className="radar-rings" fill="none" stroke="#b8f2e6" strokeWidth="5">
-        <circle cx="132" cy="198" r="38"/><circle cx="132" cy="198" r="65"/>
-      </g>
-      <path d="M175 147c60-74 136-74 201-19" fill="none" stroke="#ffe27a" strokeWidth="6" strokeDasharray="10 12" className="alert-line" />
-      <g className="rescue-whale swim-reverse">
-        <MascotWhale transform="translate(165 267) scale(.65)" />
-      </g>
-      <g className="location-pin">
-        <path d="M300 222c0-25 19-44 44-44s44 19 44 44c0 38-44 75-44 75s-44-37-44-75Z" fill="#ff8e78" className="ink" />
-        <circle cx="344" cy="221" r="13" fill="#fff7e4" className="ink thin" />
-      </g>
+
+      <circle cx="280" cy="215" r="204" fill="none" stroke="#b8f2e6" strokeWidth="5" opacity=".34" />
     </svg>
   )
 }
@@ -424,13 +497,13 @@ function FinaleWhales() {
   return (
     <svg viewBox="0 0 800 290" aria-hidden="true" className="finale-whales">
       <g className="pod pod-one">
-        <MascotWhale transform="translate(38 55) scale(1)" />
+        <MascotWhale transform="translate(38 55) scale(1)" className="whale-shade-pod-one" />
       </g>
       <g className="pod pod-two">
-        <MascotWhale transform="translate(490 20) scale(.66)" />
+        <MascotWhale transform="translate(490 20) scale(.66)" className="whale-shade-pod-two" />
       </g>
       <g className="pod pod-three">
-        <MascotWhale transform="translate(400 172) scale(.45)" />
+        <MascotWhale transform="translate(400 172) scale(.45)" className="whale-shade-pod-three" />
       </g>
       <TinyFish x={704} y={214} flip color="#ff8e78" />
       <TinyFish x={66} y={68} color="#ffe27a" />
@@ -548,18 +621,40 @@ function App() {
   const [celebrate, setCelebrate] = useState(false)
 
   useEffect(() => {
-    const chapters = document.querySelectorAll<HTMLElement>('.story-chapter')
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-        if (visible) setActiveId((visible.target as HTMLElement).dataset.chapter ?? 'top')
-      },
-      { rootMargin: '-25% 0px -55%', threshold: [0, 0.1, 0.35, 0.65] },
-    )
-    chapters.forEach((chapter) => observer.observe(chapter))
-    return () => observer.disconnect()
+    const chapters = Array.from(document.querySelectorAll<HTMLElement>('.story-chapter'))
+    let frame = 0
+
+    const updateActiveChapter = () => {
+      frame = 0
+      const marker = window.innerHeight * 0.38
+      let activeChapter = chapters[0]
+
+      for (const chapter of chapters) {
+        const bounds = chapter.getBoundingClientRect()
+        if (bounds.top <= marker) activeChapter = chapter
+        if (bounds.top <= marker && bounds.bottom > marker) {
+          activeChapter = chapter
+          break
+        }
+      }
+
+      const nextId = activeChapter?.dataset.chapter ?? 'top'
+      setActiveId((currentId) => currentId === nextId ? currentId : nextId)
+    }
+
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateActiveChapter)
+    }
+
+    updateActiveChapter()
+    window.addEventListener('scroll', requestUpdate, { passive: true })
+    window.addEventListener('resize', requestUpdate)
+
+    return () => {
+      window.removeEventListener('scroll', requestUpdate)
+      window.removeEventListener('resize', requestUpdate)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
   }, [])
 
   useEffect(() => {
@@ -598,7 +693,7 @@ function App() {
             <div className="hero-copy">
               <div className="bill-badge"><span>H.R. 1929</span> Fictional classroom proposal</div>
               <p className="hero-kicker">Whale Habitat and Life Enforcement</p>
-              <h1>WHALE<br /><em>ACT</em></h1>
+              <h1>WHALE<br /><em aria-label="ACT"><span className="act-a" aria-hidden="true">A</span><span aria-hidden="true">C</span><span aria-hidden="true">T</span></em></h1>
               <p className="hero-tagline">Whale Habitat and Life<br />Enforcement Act of 2026</p>
               <p className="formal-title">A visual guide to the <strong>Whale Habitat and Life Enforcement (WHALE) Act of 2026</strong></p>
               <div className="hero-actions">
