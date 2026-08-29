@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type IllustrationKind = 'zones' | 'gear' | 'noise' | 'rescue' | 'funding'
 
@@ -359,6 +359,146 @@ function NoiseArt() {
   )
 }
 
+function RadarWhales() {
+  const whaleRefs = useRef<(SVGGElement | null)[]>([])
+
+  useEffect(() => {
+    const center = { x: 280, y: 215 }
+    const speed = 24
+    const whales = [-Math.PI / 2, Math.PI / 6, (5 * Math.PI) / 6].map((angle, index) => ({
+      x: center.x + Math.cos(angle) * 112,
+      y: center.y + Math.sin(angle) * 112,
+      heading: angle + Math.PI / 2,
+      orbitDirection: 1,
+      targetRadius: 100 + index * 7,
+      turnRemaining: 0,
+      nextTurn: 10 + index * 3.3,
+    }))
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    const draw = () => whales.forEach((whale, index) => {
+      const element = whaleRefs.current[index]
+      if (element) element.setAttribute('transform', `translate(${whale.x.toFixed(2)} ${whale.y.toFixed(2)}) rotate(${(whale.heading * 180 / Math.PI).toFixed(2)})`)
+    })
+
+    draw()
+    if (reduceMotion) return
+
+    const normalizeAngle = (angle: number) => Math.atan2(Math.sin(angle), Math.cos(angle))
+    let startedAt = performance.now()
+    let previousTime = startedAt
+    let frame = 0
+
+    const animate = (time: number) => {
+      const elapsed = (time - startedAt) / 1000
+      const dt = Math.min((time - previousTime) / 1000, .04)
+      previousTime = time
+
+      whales.forEach((whale) => {
+        if (elapsed >= whale.nextTurn) {
+          whale.turnRemaining = (Math.random() < .5 ? -1 : 1) * Math.PI
+          whale.targetRadius = 95 + Math.random() * 25
+          whale.nextTurn += 10
+        }
+
+        if (Math.abs(whale.turnRemaining) > .001) {
+          const turnStep = Math.sign(whale.turnRemaining) * Math.min(Math.abs(whale.turnRemaining), 1.15 * dt)
+          whale.heading += turnStep
+          whale.turnRemaining -= turnStep
+          if (Math.abs(whale.turnRemaining) <= .001) whale.orbitDirection *= -1
+        } else {
+          const dx = whale.x - center.x
+          const dy = whale.y - center.y
+          const radius = Math.max(Math.hypot(dx, dy), 1)
+          const radialX = dx / radius
+          const radialY = dy / radius
+          let steerX = whale.orbitDirection * -radialY
+          let steerY = whale.orbitDirection * radialX
+          const radiusCorrection = Math.max(-.8, Math.min(.8, (radius - whale.targetRadius) / 38))
+          steerX -= radialX * radiusCorrection
+          steerY -= radialY * radiusCorrection
+
+          whales.forEach((neighbor) => {
+            if (neighbor === whale) return
+            const awayX = whale.x - neighbor.x
+            const awayY = whale.y - neighbor.y
+            const distance = Math.max(Math.hypot(awayX, awayY), 1)
+            if (distance < 115) {
+              const avoidance = (115 - distance) / 28
+              steerX += (awayX / distance) * avoidance
+              steerY += (awayY / distance) * avoidance
+            }
+          })
+
+          if (radius > 148) {
+            const wallAvoidance = (radius - 148) / 8
+            steerX -= radialX * wallAvoidance
+            steerY -= radialY * wallAvoidance
+          }
+
+          const desiredHeading = Math.atan2(steerY, steerX)
+          const headingChange = Math.max(-.58 * dt, Math.min(.58 * dt, normalizeAngle(desiredHeading - whale.heading)))
+          whale.heading += headingChange
+        }
+
+        const currentWallX = whale.x - center.x
+        const currentWallY = whale.y - center.y
+        const currentWallDistance = Math.max(Math.hypot(currentWallX, currentWallY), 1)
+        if (currentWallDistance > 142) {
+          const inwardHeading = Math.atan2(-currentWallY, -currentWallX)
+          whale.heading += Math.max(-1.1 * dt, Math.min(1.1 * dt, normalizeAngle(inwardHeading - whale.heading)))
+        }
+
+        let closestNeighborIndex = -1
+        let closestDistance = Infinity
+        whales.forEach((neighbor, neighborIndex) => {
+          if (neighbor === whale) return
+          const distance = Math.hypot(whale.x - neighbor.x, whale.y - neighbor.y)
+          if (distance < closestDistance) {
+            closestDistance = distance
+            closestNeighborIndex = neighborIndex
+          }
+        })
+        if (closestNeighborIndex >= 0 && closestDistance < 105) {
+          const closestNeighbor = whales[closestNeighborIndex]
+          const awayHeading = Math.atan2(whale.y - closestNeighbor.y, whale.x - closestNeighbor.x)
+          whale.heading += Math.max(-1.25 * dt, Math.min(1.25 * dt, normalizeAngle(awayHeading - whale.heading)))
+        }
+
+        whale.x += Math.cos(whale.heading) * speed * dt
+        whale.y += Math.sin(whale.heading) * speed * dt
+
+        const wallX = whale.x - center.x
+        const wallY = whale.y - center.y
+        const wallDistance = Math.hypot(wallX, wallY)
+        if (wallDistance > 162) {
+          whale.x = center.x + (wallX / wallDistance) * 162
+          whale.y = center.y + (wallY / wallDistance) * 162
+          whale.heading = Math.atan2(center.y - whale.y, center.x - whale.x) + (Math.random() - .5) * .35
+          whale.turnRemaining = 0
+        }
+      })
+
+      draw()
+      frame = requestAnimationFrame(animate)
+    }
+
+    frame = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(frame)
+  }, [])
+
+  const whaleSizes = [70, 80, 64]
+  return (
+    <>
+      {whaleSizes.map((size, index) => (
+        <g className="radar-moving-whale" key={size} ref={(element) => { whaleRefs.current[index] = element }}>
+          <image href={`${import.meta.env.BASE_URL}radar-whale.png`} x={-size / 2} y={-size / 2} width={size} height={size} transform="rotate(90)" />
+        </g>
+      ))}
+    </>
+  )
+}
+
 function RescueArt() {
   return (
     <svg viewBox="0 0 560 430" role="img" aria-label="A marine radar map locates three whales for monitoring and rescue teams">
@@ -379,18 +519,7 @@ function RescueArt() {
 
         <path d="M280 215 280 11A204 204 0 0 1 473 145Z" fill="#b8f2e6" opacity=".15" className="radar-sweep" />
 
-        <g className="radar-whale radar-whale-one">
-          <circle cx="190" cy="144" r="37" fill="none" stroke="#ffe27a" strokeWidth="5" className="radar-ping" />
-          <image href={`${import.meta.env.BASE_URL}radar-whale.png`} x="150" y="104" width="80" height="80" transform="rotate(-32 190 144)" />
-        </g>
-        <g className="radar-whale radar-whale-two">
-          <circle cx="367" cy="195" r="42" fill="none" stroke="#ffe27a" strokeWidth="5" className="radar-ping radar-ping-two" />
-          <image href={`${import.meta.env.BASE_URL}radar-whale.png`} x="322" y="150" width="90" height="90" transform="rotate(48 367 195)" />
-        </g>
-        <g className="radar-whale radar-whale-three">
-          <circle cx="245" cy="309" r="34" fill="none" stroke="#ffe27a" strokeWidth="5" className="radar-ping radar-ping-three" />
-          <image href={`${import.meta.env.BASE_URL}radar-whale.png`} x="211" y="275" width="68" height="68" transform="rotate(18 245 309)" />
-        </g>
+        <RadarWhales />
 
         <circle cx="280" cy="215" r="8" fill="#ff8e78" stroke="#fff5d9" strokeWidth="4" />
       </g>
