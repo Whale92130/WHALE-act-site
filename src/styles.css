@@ -282,8 +282,8 @@ button:focus-visible, a:focus-visible {
 .mute-badge { transform-box: view-box; transform-origin: 253px 112px; animation: gentle-pulse 3s ease-in-out infinite; }
 .drill-debris circle { transform-box: fill-box; transform-origin: center; animation: drill-debris 1.4s ease-out infinite; }
 .drill-debris .debris-two { animation-delay: -.45s; }.drill-debris .debris-three { animation-delay: -.9s; }
-.radar-sweep { will-change: d; }
-.radar-moving-whale { will-change: transform, opacity; }
+.radar-sweep { transform-box: view-box; transform-origin: 280px 215px; animation: radar-scan 4.5s linear infinite; }
+.radar-moving-whale { will-change: transform; }
 .radar-status-light { transform-box: fill-box; transform-origin: center; animation: radar-status 1.5s ease-in-out infinite; }
 .location-pin { transform-origin: 344px 297px; animation: pin-drop 2.8s ease-in-out infinite; }
 .alert-line { animation: dash-flow 2s linear infinite; }
@@ -558,6 +558,7 @@ footer > p { max-width: 470px; margin: 0; font-size: .79rem; line-height: 1.6; o
 @keyframes drill-vibrate { 0%,100% { transform: translateX(-1px) rotate(-.25deg); } 50% { transform: translateX(1px) rotate(.25deg); } }
 @keyframes drill-bite { 0%,100% { transform: translateY(-2px); } 50% { transform: translateY(5px); } }
 @keyframes drill-debris { 0% { transform: translate(0,0) scale(.65); opacity: 0; } 25% { opacity: 1; } 100% { transform: translate(-12px,-28px) scale(1.15); opacity: 0; } }
+@keyframes radar-scan { to { transform: rotate(360deg); } }
 @keyframes radar-status { 0%,100% { opacity: .45; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.08); } }
 @keyframes pin-drop { 0%,20% { transform: translateY(-18px); opacity: 0; } 40%,85% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(4px); opacity: 0; } }
 @keyframes dash-flow { to { stroke-dashoffset: -44; } }
