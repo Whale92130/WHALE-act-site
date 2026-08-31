@@ -347,7 +347,7 @@ function NoiseArt() {
       </g>
 
       <g className="noise-whale swim">
-        <MascotWhale transform="translate(261 158) scale(.75)" className="whale-shade-noise" />
+        <MascotWhale transform="translate(261 126) scale(.75)" className="whale-shade-noise" />
       </g>
 
       <g className="drill-debris" fill="#ffcf67">
@@ -634,8 +634,6 @@ function FinaleWhales() {
       <g className="pod pod-three">
         <MascotWhale transform="translate(400 172) scale(.45)" className="whale-shade-pod-three" />
       </g>
-      <TinyFish x={704} y={214} flip color="#ff8e78" />
-      <TinyFish x={66} y={68} color="#ffe27a" />
     </svg>
   )
 }
@@ -795,7 +793,7 @@ function App() {
           observer.unobserve(entry.target)
         }
       }),
-      { threshold: 0.16 },
+      { threshold: 0.01 },
     )
     reveals.forEach((element) => observer.observe(element))
     return () => observer.disconnect()
