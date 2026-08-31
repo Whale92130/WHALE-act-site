@@ -297,7 +297,6 @@ function GearArt() {
       </g>
 
       <rect x="38" y="346" width="189" height="50" rx="25" fill="#fff7e4" className="ink" />
-      <text x="132.5" y="378" textAnchor="middle" className="svg-label large">CUT • RELEASE</text>
       <g className="kelp" fill="#45bb84" stroke="#073b4c" strokeWidth="5">
         <path d="M31 393c20-29-5-47 14-69 21 29 1 45 18 69"/><path d="M495 392c18-27-3-45 15-67 19 25 3 43 20 67"/>
       </g>
@@ -361,25 +360,58 @@ function NoiseArt() {
 
 function RadarWhales() {
   const whaleRefs = useRef<(SVGGElement | null)[]>([])
+  const sweepRef = useRef<SVGPathElement | null>(null)
 
   useEffect(() => {
     const center = { x: 280, y: 215 }
     const speed = 24
-    const whales = [-Math.PI / 2, Math.PI / 6, (5 * Math.PI) / 6].map((angle, index) => ({
-      x: center.x + Math.cos(angle) * 112,
-      y: center.y + Math.sin(angle) * 112,
-      heading: angle + Math.PI / 2,
-      orbitDirection: 1,
-      targetRadius: 100 + index * 7,
-      turnRemaining: 0,
-      nextTurn: 10 + index * 3.3,
-    }))
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    const draw = () => whales.forEach((whale, index) => {
-      const element = whaleRefs.current[index]
-      if (element) element.setAttribute('transform', `translate(${whale.x.toFixed(2)} ${whale.y.toFixed(2)}) rotate(${(whale.heading * 180 / Math.PI).toFixed(2)})`)
+    const whales = [-Math.PI / 2, Math.PI / 6, (5 * Math.PI) / 6].map((angle, index) => {
+      const x = center.x + Math.cos(angle) * 112
+      const y = center.y + Math.sin(angle) * 112
+      const heading = angle + Math.PI / 2
+      return {
+        x,
+        y,
+        heading,
+        displayedX: x,
+        displayedY: y,
+        displayedHeading: heading,
+        lastSeen: 0,
+        orbitDirection: 1,
+        targetRadius: 100 + index * 7,
+        turnRemaining: 0,
+        nextTurn: 10 + index * 3.3,
+      }
     })
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const scanDuration = 4.5
+    const fullTurn = Math.PI * 2
+    const beamWidth = 72 * Math.PI / 180
+
+    const draw = (elapsed = 0) => {
+      const scanAngle = (elapsed / scanDuration * fullTurn) % fullTurn
+      sweepRef.current?.setAttribute('transform', `rotate(${(scanAngle * 180 / Math.PI).toFixed(2)} 280 215)`)
+
+      whales.forEach((whale, index) => {
+        const bearing = (Math.atan2(whale.x - center.x, center.y - whale.y) + fullTurn) % fullTurn
+        const angleFromBeamStart = (bearing - scanAngle + fullTurn) % fullTurn
+        const isLive = angleFromBeamStart <= beamWidth
+
+        if (isLive) {
+          whale.displayedX = whale.x
+          whale.displayedY = whale.y
+          whale.displayedHeading = whale.heading
+          whale.lastSeen = elapsed
+        }
+
+        const element = whaleRefs.current[index]
+        if (!element) return
+        const secondsSinceSeen = Math.max(0, elapsed - whale.lastSeen)
+        const opacity = isLive ? 1 : Math.max(.2, 1 - secondsSinceSeen / 5.2 * .8)
+        element.setAttribute('transform', `translate(${whale.displayedX.toFixed(2)} ${whale.displayedY.toFixed(2)}) rotate(${(whale.displayedHeading * 180 / Math.PI).toFixed(2)})`)
+        element.style.opacity = opacity.toFixed(3)
+      })
+    }
 
     draw()
     if (reduceMotion) return
@@ -479,7 +511,7 @@ function RadarWhales() {
         }
       })
 
-      draw()
+      draw(elapsed)
       frame = requestAnimationFrame(animate)
     }
 
@@ -490,6 +522,7 @@ function RadarWhales() {
   const whaleSizes = [70, 80, 64]
   return (
     <>
+      <path ref={sweepRef} d="M280 215 280 11A204 204 0 0 1 473 145Z" fill="#b8f2e6" opacity=".15" className="radar-sweep" />
       {whaleSizes.map((size, index) => (
         <g className="radar-moving-whale" key={size} ref={(element) => { whaleRefs.current[index] = element }}>
           <image href={`${import.meta.env.BASE_URL}radar-whale.png`} x={-size / 2} y={-size / 2} width={size} height={size} transform="rotate(90)" />
@@ -516,8 +549,6 @@ function RescueArt() {
           <circle cx="280" cy="215" r="202" />
           <path d="M76 215h408M280 11v408M96 123c117 42 251 42 368 0M96 307c117-42 251-42 368 0" />
         </g>
-
-        <path d="M280 215 280 11A204 204 0 0 1 473 145Z" fill="#b8f2e6" opacity=".15" className="radar-sweep" />
 
         <RadarWhales />
 
