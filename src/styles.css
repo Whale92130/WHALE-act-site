@@ -282,7 +282,7 @@ button:focus-visible, a:focus-visible {
 .mute-badge { transform-box: view-box; transform-origin: 253px 112px; animation: gentle-pulse 3s ease-in-out infinite; }
 .drill-debris circle { transform-box: fill-box; transform-origin: center; animation: drill-debris 1.4s ease-out infinite; }
 .drill-debris .debris-two { animation-delay: -.45s; }.drill-debris .debris-three { animation-delay: -.9s; }
-.radar-sweep { transform-box: view-box; transform-origin: 280px 215px; will-change: transform; }
+.radar-sweep { will-change: d; }
 .radar-moving-whale { will-change: transform, opacity; }
 .radar-status-light { transform-box: fill-box; transform-origin: center; animation: radar-status 1.5s ease-in-out infinite; }
 .location-pin { transform-origin: 344px 297px; animation: pin-drop 2.8s ease-in-out infinite; }

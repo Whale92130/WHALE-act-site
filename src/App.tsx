@@ -390,7 +390,15 @@ function RadarWhales() {
 
     const draw = (elapsed = 0) => {
       const scanAngle = (elapsed / scanDuration * fullTurn) % fullTurn
-      sweepRef.current?.setAttribute('transform', `rotate(${(scanAngle * 180 / Math.PI).toFixed(2)} 280 215)`)
+      const beamEndAngle = scanAngle + beamWidth
+      const beamStartX = center.x + Math.sin(scanAngle) * 204
+      const beamStartY = center.y - Math.cos(scanAngle) * 204
+      const beamEndX = center.x + Math.sin(beamEndAngle) * 204
+      const beamEndY = center.y - Math.cos(beamEndAngle) * 204
+      sweepRef.current?.setAttribute(
+        'd',
+        `M${center.x} ${center.y}L${beamStartX.toFixed(2)} ${beamStartY.toFixed(2)}A204 204 0 0 1 ${beamEndX.toFixed(2)} ${beamEndY.toFixed(2)}Z`,
+      )
 
       whales.forEach((whale, index) => {
         const bearing = (Math.atan2(whale.x - center.x, center.y - whale.y) + fullTurn) % fullTurn
